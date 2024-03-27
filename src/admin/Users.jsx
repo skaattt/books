@@ -34,7 +34,7 @@ const Users = () => {
 
               <tbody>
                 {loading ? (
-                  <h5 className="pt-5 fw-bold">Loading.....</h5>
+                  <h5 className="pt-5 fw-bold">Идёт загрузка.....</h5>
                 ) : (
                   usersData?.map((user) => (
                     <tr key={user.uid}>

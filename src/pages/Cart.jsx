@@ -22,16 +22,16 @@ const Cart = () => {
           <Row>
             <Col lg="9">
               {cartItems.length === 0 ? (
-                <h2 className="fs-4 text-center">No items added to the cart</h2>
+                <h2 className="fs-4 text-center">Корзина пустая</h2>
               ) : (
                 <table className="table bordered">
                   <thead>
                     <tr>
-                      <th>Image</th>
-                      <th>Title</th>
-                      <th>Price</th>
-                      <th>Qty</th>
-                      <th>Delete</th>
+                      <th>Изображение</th>
+                      <th>Название</th>
+                      <th>Цена</th>
+                      <th>Количество</th>
+                      <th>Удалить</th>
                     </tr>
                   </thead>
 
@@ -47,20 +47,21 @@ const Cart = () => {
             <Col lg="3">
               <div>
                 <h6 className="d-flex align-items-center justify-content-between">
-                  Subtotal
-                  <span className="fs-4 fw-bold">${totalAmount}</span>
+                  Общая сумма
+                  <span className="fs-4 fw-bold">{totalAmount} ₽</span>
                 </h6>
               </div>
               <p className="fs-6 mt-2">
-                taxes and shipping will calculate in checkout
+                налоги и стоимость доставки будут рассчитаны при оформлении
+                заказа
               </p>
               <div>
                 <button className="buy__btn w-100">
-                  <Link to="/checkout">Checkout</Link>
+                  <Link to="/checkout">Заказать</Link>
                 </button>
 
                 <button className="buy__btn w-100 mt-3">
-                  <Link to="/shop">Continue Shopping</Link>
+                  <Link to="/shop">Продолжить покупку</Link>
                 </button>
               </div>
             </Col>
@@ -84,8 +85,8 @@ const Tr = ({ item }) => {
         <img src={item.imgUrl} alt="" />
       </td>
       <td>{item.productName}</td>
-      <td>${item.price}</td>
-      <td>{item.quantity}px</td>
+      <td>{item.price} ₽</td>
+      <td>{item.quantity} шт</td>
       <td>
         <motion.i
           whileTap={{ scale: 1.2 }}

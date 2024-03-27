@@ -23,9 +23,31 @@
 }
 
 .admin__nav-top-right {
+  position: relative;
   display: flex;
   align-items: center;
   column-gap: 2rem;
+  z-index: 9;
+}
+
+.admin__actions {
+  position: absolute;
+  top: 130%;
+  left: -5px;
+  width: 100px;
+  z-index: 10;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: var(--card-bg-01);
+  line-height: 20px;
+  display: none;
+  cursor: pointer;
+}
+
+.show__profileActions {
+  display: block;
 }
 
 .admin__nav-wrapper-top .search__box {

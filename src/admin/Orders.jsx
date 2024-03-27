@@ -1,17 +1,15 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { db } from "../firebase.config";
 import { doc, deleteDoc } from "firebase/firestore";
 import useGetData from "../custom-hooks/useGetData";
 import { toast } from "react-toastify";
 
-const AllProducts = () => {
-  const { data: productsData, loading } = useGetData("products");
+const Orders = () => {
+  const { data: ordersData, loading } = useGetData("orders");
 
   const deleteProduct = async (id) => {
-    await deleteDoc(doc(db, "products", id));
+    await deleteDoc(doc(db, "orders", id));
     toast.success("Удалено!");
   };
 
@@ -20,33 +18,33 @@ const AllProducts = () => {
       <Container>
         <Row>
           <Col lg="12">
-            <motion.button whileTap={{ scale: 1.2 }} className="buy__btn mb-3">
-              <Link to="/dashboard/add-product">Добавить новую книгу</Link>
-            </motion.button>
-          </Col>
-          <Col lg="12">
             <table className="table">
               <thead>
                 <tr>
-                  <th>Изображение</th>
-                  <th>Наименование</th>
-                  <th>Жанр</th>
-                  <th>Цена</th>
-                  <th>Действие</th>
+                  <th>Пользователь</th>
+                  <th>Email</th>
+                  <th>Номер телефона</th>
+                  <th>Почтовый индекс</th>
+                  <th>Адрес</th>
+                  <th>Стоимость</th>
                 </tr>
               </thead>
               <tbody>
                 {loading ? (
-                  <h3 className="py-5 text-center fw-bold">Идёт загрузка.....</h3>
+                  <h3 className="py-5 text-center fw-bold">
+                    Идёт загрузка.....
+                  </h3>
                 ) : (
-                  productsData.map((item) => (
+                  ordersData.map((item) => (
                     <tr key={item.id}>
+                      <td>{item.name}</td>
+                      <td>{item.email}</td>
+                      <td>{item.phoneNumber}</td>
+                      <td>{item.postalCode}</td>
                       <td>
-                        <img src={item.imgUrl} alt="" />
+                        {item.city}, {item.street}, {item.home}, {item.flat}
                       </td>
-                      <td>{item.productName}</td>
-                      <td>{item.category}</td>
-                      <td>{item.price} ₽</td>
+                      <td>{item.totalAmount} ₽</td>
                       <td>
                         <button
                           onClick={() => {
@@ -69,4 +67,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default Orders;

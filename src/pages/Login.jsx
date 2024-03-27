@@ -29,7 +29,7 @@ const Login = () => {
 
       console.log(user);
       setLoading(false);
-      toast.success("Successfully logged in");
+      toast.success("Вы вошли в систему");
       navigate("/checkout");
 
     } catch (error) {
@@ -55,7 +55,7 @@ const Login = () => {
                   <FormGroup className="form__group">
                     <input
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder="Введите email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -64,18 +64,18 @@ const Login = () => {
                   <FormGroup className="form__group">
                     <input
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="Введите пароль"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </FormGroup>
 
                   <button type="submit" className="buy__btn auth__btn">
-                    Login
+                    Войти
                   </button>
                   <p>
-                    Don't have an account?{" "}
-                    <Link to="/signup">Create an account</Link>
+                    У Вас нет аккаунта?{" "}
+                    <Link to="/signup">Перейти к регистрации</Link>
                   </p>
                 </Form>
               </Col>

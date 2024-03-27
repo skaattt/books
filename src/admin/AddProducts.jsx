@@ -123,14 +123,14 @@ const AddProducts = () => {
                         onChange={(e) => setEnterCategory(e.target.value)}
                       >
                         <option>Выберите жанр</option>
-                        <option value="detectives">Детектив</option>
+                        <option value="detective">Детектив</option>
                         <option value="foreignLiterature">Зарубежная литература</option>
                         <option value="comics">Комикс</option>
                         <option value="scienceEducation">Наука и образование</option>
                         <option value="poetryDrama">Поэзия и драматургия</option>
                         <option value="prose">Проза</option>
                         <option value="psychology">Психология</option>
-                        <option value="novels">Роман</option>
+                        <option value="novel">Роман</option>
                         <option value="russianLiterature">Русская литература</option>
                         <option value="horrorMysticism">Ужасы, мистика</option>
                         <option value="esotericism">Эзотерика</option>

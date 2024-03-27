@@ -65,11 +65,11 @@ const Signup = () => {
       );
 
       setLoading(false);
-      toast.success("Account created");
+      toast.success("Аккаунт зарегистрирован");
       navigate("/login");
     } catch (error) {
       setLoading(false);
-      toast.error("something went wrong");
+      toast.error("Произошла ошибка");
     }
   };
 
@@ -80,7 +80,7 @@ const Signup = () => {
           <Row>
             {loading ? (
               <Col lg="12" className="text-center">
-                <h5 className="fw-bold">Loading......</h5>
+                <h5 className="fw-bold">Подождите, идёт загрузка......</h5>
               </Col>
             ) : (
               <Col lg="6" className="m-auto text-center">
@@ -90,7 +90,7 @@ const Signup = () => {
                   <FormGroup className="form__group">
                     <input
                       type="text"
-                      placeholder="Username"
+                      placeholder="Имя пользователя"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                     />
@@ -99,7 +99,7 @@ const Signup = () => {
                   <FormGroup className="form__group">
                     <input
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder="Введите email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -108,7 +108,7 @@ const Signup = () => {
                   <FormGroup className="form__group">
                     <input
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="Введите пароль"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -122,10 +122,10 @@ const Signup = () => {
                   </FormGroup>
 
                   <button type="submit" className="buy__btn auth__btn">
-                    Create an Account
+                    Зарегистрироваться
                   </button>
                   <p>
-                    Already have an account? <Link to="/login">Login</Link>
+                    Уже есть аккаунт? <Link to="/login">Войти</Link>
                   </p>
                 </Form>
               </Col>

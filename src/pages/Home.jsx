@@ -5,77 +5,84 @@ import { motion } from "framer-motion";
 import Helmet from "../components/Helmet/Helmet";
 import "../styles/home.css";
 import { Container, Row, Col } from "reactstrap";
-import heroImg from "../assets/images/hero-img.png";
+import heroImg from "../assets/images/book-15.png";
 import Services from "../services/Services";
 import ProductsList from "../components/UI/ProductsList";
 import Clock from "../components/UI/Clock";
-import counterImg from "../assets/images/counter-timer-img.png";
+import counterImg from "../assets/images/Book-PNG-Isolated-Photo.png";
 
 import useGetData from "../custom-hooks/useGetData";
 
 const Home = () => {
+
   const { data: products, loading } = useGetData("products");
 
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
-  const [mobileProducts, setMobileProducts] = useState([]);
-  const [wirelessProducts, setWirelessProducts] = useState([]);
+  const [detectiveProducts, setDetectiveProducts] = useState([]);
+  const [russianLiteratureProducts, setRussianLiteratureProducts] = useState(
+    []
+  );
   const [popularProducts, setPopularProducts] = useState([]);
 
   const year = new Date().getFullYear();
 
   useEffect(() => {
     const filteredTrendingProducts = products.filter(
-      (item) => item.category === "chair"
+      (item) => item.category === "novel"
     );
 
     const filteredBestSalesProducts = products.filter(
-      (item) => item.category === "sofa"
+      (item) => item.category === "prose"
     );
 
-    const filteredMobileProducts = products.filter(
-      (item) => item.category === "mobile"
+    const filteredDetectiveProducts = products.filter(
+      (item) => item.category === "detective"
     );
 
-    const filteredWirelessProducts = products.filter(
-      (item) => item.category === "wireless"
+    const filteredRussianLiteratureProducts = products.filter(
+      (item) => item.category === "russianLiterature"
     );
 
     const filteredPopularProducts = products.filter(
-      (item) => item.category === "watch"
+      (item) => item.category === "psychology"
     );
 
     setTrendingProducts(filteredTrendingProducts);
     setBestSalesProducts(filteredBestSalesProducts);
-    setMobileProducts(filteredMobileProducts);
-    setWirelessProducts(filteredWirelessProducts);
+    setDetectiveProducts(filteredDetectiveProducts);
+    setRussianLiteratureProducts(filteredRussianLiteratureProducts);
     setPopularProducts(filteredPopularProducts);
   }, [products]);
 
   return (
+    
     <Helmet title={"Главная"}>
       <section className="hero__section">
         <Container>
           <Row>
-            <Col lg="6" md="6">
-              <div className="hero__content">
-                <p className="hero__subtitle">Trending product in {year}</p>
-                <h2>Make Your Interior More Minimalistic & Modern</h2>
-                <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Cumque soluta ut voluptates nobis explicabo asperiores
-                  mollitia, suscipit fuga quisquam repellendus ex aspernatur
-                  libero cum. Cum exercitationem commodi officia quas dolores!
-                </p>
-                <motion.button whileTap={{ scale: 1.2 }} className="buy__btn">
-                  <Link to="/shop">SHOP NOW</Link>
-                </motion.button>
-              </div>
-            </Col>
-
-            <Col lg="6" md="6">
+            <Col lg="4" md="12">
               <div className="hero__img">
                 <img src={heroImg} alt="" />
+              </div>
+            </Col>
+            <Col lg="8" md="12">
+              <div className="hero__content">
+                <p className="hero__subtitle">Новинки {year}</p>
+                <h2>Откройте мир новых книг!</h2>
+                <p>
+                  Пришло время окунуться в мир захватывающих приключений,
+                  таинственных загадок и ярких эмоций с нашими новинками книг!
+                  Здесь каждый найдет что-то для себя - увлекательные романы,
+                  заставляющие забыть о реальности, интригующие детективы,
+                  которые держат в напряжении до последней страницы, или
+                  познавательные книги, открывающие перед нами тайны природы и
+                  человечества. Откройте мир новых книг и окунитесь в него с
+                  головой!
+                </p>
+                <motion.button whileTap={{ scale: 1.2 }} className="buy__btn">
+                  <Link to="/shop">К покупкам!</Link>
+                </motion.button>
               </div>
             </Col>
           </Row>
@@ -87,11 +94,11 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center">
-              <h2 className="section__title">Trending Products</h2>
+              <h2 className="section__title pb-5">Новые поступления</h2>
             </Col>
 
             {loading ? (
-              <h5 className="fw-bold">Loading.....</h5>
+              <h5 className="fw-bold">Идёт загрузка.....</h5>
             ) : (
               <ProductsList data={trendingProducts} />
             )}
@@ -103,11 +110,11 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center">
-              <h2 className="section__title">Best Sales</h2>
+              <h2 className="section__title pb-5">Лучшие продажи</h2>
             </Col>
 
             {loading ? (
-              <h5 className="fw-bold">Loading.....</h5>
+              <h5 className="fw-bold">Идёт загрузка.....</h5>
             ) : (
               <ProductsList data={bestSalesProducts} />
             )}
@@ -120,8 +127,9 @@ const Home = () => {
           <Row>
             <Col lg="6" md="12" className="count__down-col">
               <div className="clock__top-content">
-                <h4 className="text-white fs-6 mb-2">Limited Offers</h4>
-                <h3 className="text-white fs-5 mb-3">Quality Armchair</h3>
+                <h3 className="text-white fs-6 mb-3">
+                  Ограниченные предложения
+                </h3>
               </div>
               <Clock />
 
@@ -129,7 +137,7 @@ const Home = () => {
                 whileTap={{ scale: 1.2 }}
                 className="buy__btn store__btn"
               >
-                <Link to="/shop">Visit Store</Link>
+                <Link to="/shop">За новыми книгами!</Link>
               </motion.button>
             </Col>
 
@@ -144,17 +152,17 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center mb-5">
-              <h2 className="section__title">New Arrivals</h2>
+              <h2 className="section__title pb-5">Популярные сейчас</h2>
             </Col>
             {loading ? (
-              <h5 className="fw-bold">Loading.....</h5>
+              <h5 className="fw-bold">Идёт загрузка.....</h5>
             ) : (
-              <ProductsList data={mobileProducts} />
+              <ProductsList data={detectiveProducts} />
             )}
             {loading ? (
-              <h5 className="fw-bold">Loading.....</h5>
+              <h5 className="fw-bold">Идёт загрузка.....</h5>
             ) : (
-              <ProductsList data={wirelessProducts} />
+              <ProductsList data={russianLiteratureProducts} />
             )}
           </Row>
         </Container>
@@ -164,10 +172,10 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="text-center mb-5">
-              <h2 className="section__title">Popular in Category</h2>
+              <h2 className="section__title pb-5">Что почитать</h2>
             </Col>
             {loading ? (
-              <h5 className="fw-bold">Loading.....</h5>
+              <h5 className="fw-bold">Идёт загрузка.....</h5>
             ) : (
               <ProductsList data={popularProducts} />
             )}

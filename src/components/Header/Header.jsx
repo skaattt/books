@@ -5,7 +5,7 @@ import "./header.css";
 
 import { motion } from "framer-motion";
 
-import logo from "../../assets/images/eco-logo.png";
+import logo from "../../assets/images/logo.png";
 import userIcon from "../../assets/images/user-icon.png";
 
 import { Container, Row } from "reactstrap";
@@ -38,7 +38,7 @@ const Header = () => {
 
   const menuRef = useRef(null);
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
+  const { currentUser ,admin } = useAuth();
 
   const stickyHeaderFunc = () => {
     window.addEventListener("scroll", () => {
@@ -56,7 +56,7 @@ const Header = () => {
   const logout = () => {
     signOut(auth)
       .then(() => {
-        toast.success("Logged out");
+        toast.success("Вы вышли из аккаунта");
         navigate("/home");
       })
       .catch((err) => {
@@ -109,10 +109,10 @@ const Header = () => {
             </div>
 
             <div className="nav__icons">
-              <span className="fav__icon">
+              {/*<span className="fav__icon">
                 <i class="ri-heart-line"></i>
                 <span className="badge">1</span>
-              </span>
+                    </span>*/}
               <span className="cart__icon" onClick={navigateToCart}>
                 <i class="ri-shopping-bag-line"></i>
                 <span className="badge">{totalQuantity}</span>
@@ -137,7 +137,6 @@ const Header = () => {
                     <div className="d-flex align-items-center justify-content-center flex-column">
                       <Link to="/signup">Рeгистрация</Link>
                       <Link to="/login">Авторизация</Link>
-                      <Link to="/dashboard">Dashboard</Link>
                     </div>
                   )}
                 </div>

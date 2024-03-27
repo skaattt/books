@@ -1,32 +1,55 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Container, Row } from "reactstrap";
 
 import useAuth from "../custom-hooks/useAuth";
 import "../styles/admin-nav.css";
 
-import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
+
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase.config";
+import { toast } from "react-toastify";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const admin__nav = [
   {
-    display: "Dashboard",
+    display: "Дашборд",
     path: "/dashboard",
   },
   {
-    display: "All-Products",
+    display: "Все книги",
     path: "/dashboard/all-products",
   },
   {
-    display: "Orders",
+    display: "Заказы",
     path: "/dashboard/orders",
   },
   {
-    display: "Users",
+    display: "Пользователи",
     path: "/dashboard/users",
   },
 ];
 
 const AdminNav = () => {
   const { currentUser } = useAuth();
+
+  const profileActionRef = useRef(null);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success("Вы вышли из аккаунта");
+        navigate("/home");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
+
+  const toggleProfileActions = () =>
+    profileActionRef.current.classList.toggle("show__profileActions");
 
   return (
     <>
@@ -38,21 +61,21 @@ const AdminNav = () => {
                 <h2>BookShop</h2>
               </div>
 
-              <div className="search__box">
-                <input type="text" placeholder="Поиск....." />
-                <span>
-                  <i class="ri-search-line"></i>
-                </span>
-              </div>
-
               <div className="admin__nav-top-right">
-                <span>
-                  <i class="ri-notification-3-line"></i>
-                </span>
-                <span>
-                  <i class="ri-settings-2-line"></i>
-                </span>
-                <img src={currentUser && currentUser.photoURL} alt="" />
+                <motion.img
+                  whileTap={{ scale: 1.2 }}
+                  src={currentUser && currentUser.photoURL}
+                  alt=""
+                  onClick={toggleProfileActions}
+                />
+
+                <div
+                  className="admin__actions"
+                  ref={profileActionRef}
+                  onClick={toggleProfileActions}
+                >
+                  <span onClick={logout}>Выход</span>
+                </div>
               </div>
             </div>
           </Container>
