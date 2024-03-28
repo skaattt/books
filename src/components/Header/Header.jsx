@@ -38,7 +38,7 @@ const Header = () => {
 
   const menuRef = useRef(null);
   const navigate = useNavigate();
-  const { currentUser ,admin } = useAuth();
+  const { currentUser } = useAuth();
 
   const stickyHeaderFunc = () => {
     window.addEventListener("scroll", () => {
@@ -87,7 +87,7 @@ const Header = () => {
             <div className="logo">
               <img src={logo} alt="logo" />
               <div>
-                <h1>BookShop</h1>
+                <h1><Link to={`/home`}>BookShop</Link></h1>
               </div>
             </div>
 
