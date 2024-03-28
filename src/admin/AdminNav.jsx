@@ -11,6 +11,8 @@ import { auth } from "../firebase.config";
 import { toast } from "react-toastify";
 import { NavLink, useNavigate } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+
 const admin__nav = [
   {
     display: "Дашборд",
@@ -58,7 +60,7 @@ const AdminNav = () => {
           <Container>
             <div className="admin__nav-wrapper-top">
               <div className="logo">
-                <h2>BookShop</h2>
+                <h2><Link to={`/home`}>BookShop</Link></h2>
               </div>
 
               <div className="admin__nav-top-right">

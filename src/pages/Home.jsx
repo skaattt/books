@@ -20,7 +20,7 @@ const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
   const [detectiveProducts, setDetectiveProducts] = useState([]);
-  const [russianLiteratureProducts, setRussianLiteratureProducts] = useState(
+  const [foreignLiteratureProducts, setForeignLiteratureProducts] = useState(
     []
   );
   const [popularProducts, setPopularProducts] = useState([]);
@@ -40,8 +40,8 @@ const Home = () => {
       (item) => item.category === "detective"
     );
 
-    const filteredRussianLiteratureProducts = products.filter(
-      (item) => item.category === "russianLiterature"
+    const filteredForeignLiteratureProducts = products.filter(
+      (item) => item.category === "foreignLiterature"
     );
 
     const filteredPopularProducts = products.filter(
@@ -51,7 +51,7 @@ const Home = () => {
     setTrendingProducts(filteredTrendingProducts);
     setBestSalesProducts(filteredBestSalesProducts);
     setDetectiveProducts(filteredDetectiveProducts);
-    setRussianLiteratureProducts(filteredRussianLiteratureProducts);
+    setForeignLiteratureProducts(filteredForeignLiteratureProducts);
     setPopularProducts(filteredPopularProducts);
   }, [products]);
 
@@ -90,7 +90,7 @@ const Home = () => {
       </section>
 
       <Services />
-      <section className="trending__products">
+      <section className="trending__products pb-0">
         <Container>
           <Row>
             <Col lg="12" className="text-center">
@@ -106,7 +106,7 @@ const Home = () => {
         </Container>
       </section>
 
-      <section className="best__sales">
+      <section className="best__sales pb-0">
         <Container>
           <Row>
             <Col lg="12" className="text-center">
@@ -148,10 +148,10 @@ const Home = () => {
         </Container>
       </section>
 
-      <section className="new__arrivals">
+      <section className="new__arrivals pb-0">
         <Container>
           <Row>
-            <Col lg="12" className="text-center mb-5">
+            <Col lg="12" className="text-center">
               <h2 className="section__title pb-5">Популярные сейчас</h2>
             </Col>
             {loading ? (
@@ -162,16 +162,16 @@ const Home = () => {
             {loading ? (
               <h5 className="fw-bold">Идёт загрузка.....</h5>
             ) : (
-              <ProductsList data={russianLiteratureProducts} />
+              <ProductsList data={foreignLiteratureProducts} />
             )}
           </Row>
         </Container>
       </section>
 
-      <section className="popular__category">
+      <section className="popular__category pb-0">
         <Container>
           <Row>
-            <Col lg="12" className="text-center mb-5">
+            <Col lg="12" className="text-center">
               <h2 className="section__title pb-5">Что почитать</h2>
             </Col>
             {loading ? (

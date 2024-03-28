@@ -16,19 +16,19 @@ const Dashboard = () => {
           <Row>
             <Col className="lg-4">
               <div className="orders__box">
-                <h5>Orders</h5>
+                <h5>Заказы</h5>
                 <span>{orders.length}</span>
               </div>
             </Col>
             <Col className="lg-4">
               <div className="products__box">
-                <h5>Total Products</h5>
+                <h5>Всего книг</h5>
                 <span>{products.length}</span>
               </div>
             </Col>
             <Col className="lg-4">
               <div className="users__box">
-                <h5>Total Users</h5>
+                <h5>Наши пользователи</h5>
                 <span>{users.length}</span>
               </div>
             </Col>

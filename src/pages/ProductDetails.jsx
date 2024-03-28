@@ -36,7 +36,7 @@ const ProductDetails = () => {
       if (docSnap.exists()) {
         setProduct(docSnap.data());
       } else {
-        console.log("no product!");
+        console.log("Нет такого!");
       }
     };
 
@@ -46,11 +46,11 @@ const ProductDetails = () => {
   const {
     imgUrl,
     productName,
+    author,
     price,
     //avgRating,
     //reviews,
     description,
-    shortDesc,
     category,
   } = product;
 
@@ -69,7 +69,7 @@ const ProductDetails = () => {
     };
 
     console.log(reviewObj);
-    toast.success("Review submitted");
+    toast.success("Отзыв отправлен");
   };
 
   const addToCart = () => {
@@ -82,7 +82,7 @@ const ProductDetails = () => {
       })
     );
 
-    toast.success("Product added successfully");
+    toast.success("Книга в корзине!");
   };
 
   useEffect(() => {
@@ -95,10 +95,12 @@ const ProductDetails = () => {
       <section className="pt-0">
         <Container>
           <Row>
-            <Col lg="6">
-              <img src={imgUrl} alt="" />
+            <Col lg="4">
+              <div className="product__img mt-5">
+                <img className="product__img" src={imgUrl} alt="" />
+              </div>
             </Col>
-            <Col lg="6">
+            <Col lg="8">
               <div className="product__details">
                 <h2>{productName}</h2>
                 <div className="product__rating d-flex align-items-center gap-5 mb-3">
@@ -124,17 +126,17 @@ const ProductDetails = () => {
                 </div>
 
                 <div className="d-flex align-items-center gap-5">
-                  <span className="product__price">${price}</span>
-                  <span>Ctegory: {category}</span>
+                  <span className="product__price">{price} ₽</span>
+                  <span>Жанр: {category}</span>
                 </div>
-                <p className="mt-3">{shortDesc}</p>
+                <p className="mt-3">Автор: {author}</p>
 
                 <motion.button
                   whileTap={{ scale: 1.2 }}
                   className="buy__btn"
                   onClick={addToCart}
                 >
-                  Add to Cart
+                  В корзину!
                 </motion.button>
               </div>
             </Col>
@@ -151,13 +153,13 @@ const ProductDetails = () => {
                   className={`${tab === "desc" ? "active__tab" : ""}`}
                   onClick={() => setTab("desc")}
                 >
-                  Description
+                  Аннотация
                 </h6>
                 <h6
                   className={`${tab === "rev" ? "active__tab" : ""}`}
                   onClick={() => setTab("rev")}
                 >
-                  Reviews {/*({reviews.length})*/}
+                  Отзывы {/*({reviews.length})*/}
                 </h6>
               </div>
 
@@ -179,12 +181,12 @@ const ProductDetails = () => {
                       </ul>*/}
 
                     <div className="review__form">
-                      <h4>Leave your experience</h4>
+                      <h4>Оставьте отзыв о данной книге</h4>
                       <form action="" onSubmit={submitHandler}>
                         <div className="form__group">
                           <input
                             type="text"
-                            placeholder="Enter name"
+                            placeholder="Ваше имя"
                             ref={reviewUser}
                             required
                           />
@@ -228,7 +230,7 @@ const ProductDetails = () => {
                             ref={reviewMsg}
                             rows={4}
                             type="text"
-                            placeholder="Review Message..."
+                            placeholder="Ваш отзыв..."
                             required
                           />
                         </div>
@@ -238,7 +240,7 @@ const ProductDetails = () => {
                           type="submit"
                           className="buy__btn"
                         >
-                          Submit
+                          Отправить
                         </motion.button>
                       </form>
                     </div>
@@ -248,7 +250,9 @@ const ProductDetails = () => {
             </Col>
 
             <Col lg="12" className="mt-5">
-              <h2 className="related__title">You might also like</h2>
+              <h2 className="related__title mb-5">
+                Такжe вам могут понравиться
+              </h2>
             </Col>
 
             <ProductsList data={relatedProducts} />

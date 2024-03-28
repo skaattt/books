@@ -51,7 +51,7 @@ const AddProducts = () => {
         }
       );
       setLoading(false);
-      toast.success("Книга успешно добавлена!");
+      toast.success("Книга добавлена!");
       navigate("/dashboard/all-products");
     } catch (err) {
       setLoading(false);

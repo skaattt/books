@@ -1,3 +1,8 @@
+.product__img{
+  height: 400px;
+  width: 300px;
+}
+
 .product__details {
   margin-top: 70px;
 }
@@ -71,7 +76,7 @@
 }
 
 .form__group {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .form__group span {
