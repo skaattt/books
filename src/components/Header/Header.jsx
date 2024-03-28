@@ -85,6 +85,7 @@ const Header = () => {
         <Row>
           <div className="nav__wrapper">
             <div className="logo">
+              <Link to={`/dashboard`}><img src={logo} alt="logo" /></Link>
               <img src={logo} alt="logo" />
               <div>
                 <h1><Link to={`/home`}>BookShop</Link></h1>
