@@ -85,10 +85,13 @@ const Header = () => {
         <Row>
           <div className="nav__wrapper">
             <div className="logo">
-              <Link to={`/dashboard`}><img src={logo} alt="logo" /></Link>
-              <img src={logo} alt="logo" />
+              <Link to={`/dashboard`}>
+                <img src={logo} alt="logo" />
+              </Link>
               <div>
-                <h1><Link to={`/home`}>BookShop</Link></h1>
+                <h1>
+                  <Link to={`/home`}>BookShop</Link>
+                </h1>
               </div>
             </div>
 
