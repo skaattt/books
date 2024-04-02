@@ -25,7 +25,7 @@ const Footer = () => {
 
           <Col lg="2" md="3" className="mb-4">
             <div className="footer__quick-links">
-              <h4 className="quick__links-title">Useful Links</h4>
+              <h4 className="quick__links-title">Навигация по сайту</h4>
               <ListGroup className="mb-3">
                 <ListGroupItem className="ps-0 border-0">
                   <Link to="/shop">Каталог</Link>
