@@ -47,6 +47,7 @@ const ProductDetails = () => {
     imgUrl,
     productName,
     author,
+    isbn,
     price,
     //avgRating,
     //reviews,
@@ -78,6 +79,7 @@ const ProductDetails = () => {
         id,
         image: imgUrl,
         productName,
+        isbn,
         price,
       })
     );
@@ -130,6 +132,7 @@ const ProductDetails = () => {
                   <span>Жанр: {category}</span>
                 </div>
                 <p className="mt-3">Автор: {author}</p>
+                <p className="mt-3">ISBN: {isbn}</p>
 
                 <motion.button
                   whileTap={{ scale: 1.2 }}

@@ -26,6 +26,7 @@ const Orders = () => {
                   <th>Номер телефона</th>
                   <th>Почтовый индекс</th>
                   <th>Адрес</th>
+                  <th>ISBN</th>
                   <th>Итого</th>
                 </tr>
               </thead>
@@ -44,6 +45,7 @@ const Orders = () => {
                       <td>
                         {item.city}, {item.street}, {item.home}, {item.flat}
                       </td>
+                      <td>{item.isbn}</td>
                       <td>{item.totalAmount} ₽</td>
                       <td>
                         <button

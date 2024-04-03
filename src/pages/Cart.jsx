@@ -29,6 +29,7 @@ const Cart = () => {
                     <tr>
                       <th>Изображение</th>
                       <th>Название</th>
+                      <th>ISBN</th>
                       <th>Цена</th>
                       <th>Количество</th>
                       <th>Удалить</th>
@@ -85,6 +86,7 @@ const Tr = ({ item }) => {
         <img src={item.imgUrl} alt="" />
       </td>
       <td>{item.productName}</td>
+      <td>{item.isbn}</td>
       <td>{item.price} ₽</td>
       <td>{item.quantity} шт</td>
       <td>

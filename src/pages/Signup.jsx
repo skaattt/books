@@ -37,7 +37,7 @@ const Signup = () => {
 
       const user = await userCredential.user;
 
-      const storageRef = ref(storage, `images/${Date.now() + file.name}`);
+      const storageRef = ref(storage, `images/${file.name}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(

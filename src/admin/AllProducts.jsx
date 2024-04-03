@@ -30,6 +30,7 @@ const AllProducts = () => {
                 <tr>
                   <th>Изображение</th>
                   <th>Наименование</th>
+                  <th>ISBN</th>
                   <th>Жанр</th>
                   <th>Цена</th>
                   <th>Действие</th>
@@ -45,6 +46,7 @@ const AllProducts = () => {
                         <img src={item.imgUrl} alt="" />
                       </td>
                       <td>{item.productName}</td>
+                      <td>{item.isbn}</td>
                       <td>{item.category}</td>
                       <td>{item.price} ₽</td>
                       <td>

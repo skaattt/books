@@ -151,6 +151,7 @@ const Checkout = () => {
                 <h4>
                   Итого: <span>{totalAmount} ₽</span>
                 </h4>
+                <span>оплата при получении</span>
                 <button
                   onClick={addOrder}
                   type="submit"
