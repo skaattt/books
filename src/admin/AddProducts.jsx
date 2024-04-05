@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddProducts = () => {
   const [enterTitle, setEnterTitle] = useState("");
+  const [enterISBN, setEnterISBN] = useState("");
   const [enterAuthor, setEnterAuthor] = useState("");
   const [enterDescription, setEnterDescription] = useState("");
   const [enterCategory, setEnterCategory] = useState("");
@@ -41,6 +42,7 @@ const AddProducts = () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await addDoc(docRef, {
               productName: enterTitle,
+              isbn: enterISBN,
               author: enterAuthor,
               description: enterDescription,
               category: enterCategory,
@@ -77,6 +79,17 @@ const AddProducts = () => {
                       placeholder="Название книги"
                       value={enterTitle}
                       onChange={(e) => setEnterTitle(e.target.value)}
+                      required
+                    />
+                  </FormGroup>
+
+                  <FormGroup className="form__group">
+                    <span>ISBN</span>
+                    <input
+                      type="text"
+                      placeholder="ISBN"
+                      value={enterISBN}
+                      onChange={(e) => setEnterISBN(e.target.value)}
                       required
                     />
                   </FormGroup>

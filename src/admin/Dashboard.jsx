@@ -28,7 +28,7 @@ const Dashboard = () => {
             </Col>
             <Col className="lg-4">
               <div className="users__box">
-                <h5>Наши пользователи</h5>
+                <h5>Всего пользователей</h5>
                 <span>{users.length}</span>
               </div>
             </Col>
